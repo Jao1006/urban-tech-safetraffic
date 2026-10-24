@@ -1,21 +1,26 @@
-"""
-Núcleo matemático e algorítmico do SafeTraffic.
-Responsável por avaliar regras booleanas, tabelas-verdade e máquina de estados.
-"""
 
-def avaliar_regras_semaforo(s1: bool, s2: bool, pedestre: bool, emergencia: bool) -> str:
-    """
-    Avalia as regras de decisão lógica do semáforo com base nas entradas dos sensores.
-    Retorna o estado ou direção prioritária correspondente.
-    """
-    # Esqueleto inicial da lógica de decisão citada no documento do projeto
-    if emergencia:
-        return "EMERGENCIA"
-    elif pedestre:
-        return "TRAVESSIA_PEDESTRE"
-    elif s1:
-        return "VIA_PRINCIPAL"
-    elif s2:
-        return "VIA_SECUNDARIA"
-    else:
-        return "ALTERNAR"
+# Tabela-verdade / Casos de Teste — A.10
+# ----------------------------------------------------------------
+# Cenário     | S1 | S2 | Pedestre | Emergência | Resultado
+# ----------------------------------------------------------------
+# Normal      | 1  | 0  | 0        | 0          | Principal
+# Secundária  | 0  | 1  | 0        | 0          | Secundária
+# Pedestre    | 1  | 1  | 1        | 0          | Travessia
+# Emergência  | 1  | 1  | 1        | 1          | Emergência
+# ----------------------------------------------------------------
+def definir_saida(S1, S2, S3, S4,):
+    match (S1, S2, S3, S4):
+        case (_, _, _, 1):
+            saida = "Emergência"
+        case (_, _, 1, 0):
+            saida = "Travessia"
+        case (1, _, 0, 0):
+            saida = "Principal"
+        case (0, 1, 0, 0):
+            saida = "Secundária"
+        case(0, 0, 0, 0):
+            saida = "Alternar"
+        case _:
+            saida = "entrada inválida"
+    return saida
+
