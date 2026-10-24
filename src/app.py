@@ -1,15 +1,15 @@
-"""
-Interface de Linha de Comando (CLI) para demonstração do SafeTraffic.
-"""
-from src.algorithms.motor_logico import avaliar_regras_semaforo
+from src.algorithms.motor_logico import definir_saida
 
-def main():
-    print("=== Plataforma UrbanTech: SafeTraffic ===")
-    print("Iniciando motor inteligente de controle semafórico...")
+entradas = []
+print("=== Plataforma UrbanTech: SafeTraffic ===")
+
+for i in range(1,5):
+    entrada = int(input(f"Digite S{i}: "))
+    i+=1
+    entradas.append(entrada)
     
-    # Exemplo simulado rápido
-    resultado = avaliar_regras_semaforo(s1=True, s2=False, pedestre=False, emergencia=False)
-    print(f"Decisão do motor para o cenário de teste: {resultado}")
-
-if __name__ == "__main__":
-    main()
+entrada1, entrada2, entrada3, entrada4 = entradas
+print("Iniciando motor inteligente de controle semafórico...")
+print(f"\n===========\n{definir_saida(entrada1, entrada2, entrada3, entrada4)}\n===========")
+    
+  

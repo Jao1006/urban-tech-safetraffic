@@ -1,6 +1,3 @@
-"""
-Testes unitários iniciais para o SafeTraffic.
-"""
 from src.algorithms.motor_logico import avaliar_regras_semaforo
 
 def test_emergencia_prioridade():
